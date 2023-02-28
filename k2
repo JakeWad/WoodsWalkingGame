@@ -1,0 +1,88 @@
+import pygame
+import numpy as np
+
+# Initialize Pygame
+pygame.init()
+
+# Define colors
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+# Set up the screen
+screen_width = 640
+screen_height = 480
+screen = pygame.display.set_mode((screen_width, screen_height))
+pygame.display.set_caption("Wandering in the Woods")
+
+# Load the background music
+pygame.mixer.music.load("background_music.wav")
+
+# Load the happy graphics display image
+happy_image = pygame.image.load("happy_image.png")
+
+# Set up the grid
+grid_size = 10
+grid = np.zeros((grid_size, grid_size))
+
+# Place the characters in diagonally opposite corners of the grid
+character1_pos = (0, 0)
+character2_pos = (grid_size-1, grid_size-1)
+
+# Define the character images
+character1_image = pygame.image.load("character1_image.png")
+character2_image = pygame.image.load("character2_image.png")
+
+# Define the character class
+class Character(pygame.sprite.Sprite):
+    def __init__(self, image, pos):
+        super().__init__()
+        self.image = image
+        self.rect = self.image.get_rect()
+        self.rect.x = pos[0]
+        self.rect.y = pos[1]
+        self.moves = 0
+    
+    def move(self):
+        # Move the character randomly on the grid
+        self.rect.x += np.random.randint(-1, 2)
+        self.rect.y += np.random.randint(-1, 2)
+        self.moves += 1
+
+# Create the characters
+character1 = Character(character1_image, character1_pos)
+character2 = Character(character2_image, character2_pos)
+
+# Set up the sprite group
+all_sprites = pygame.sprite.Group()
+all_sprites.add(character1, character2)
+
+# Start the background music
+pygame.mixer.music.play(-1)
+
+# Main game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Clear the screen
+    screen.fill(BLACK)
+    
+    # Move the characters
+    character1.move()
+    character2.move()
+    
+    # Check for collision
+    if character1.rect.colliderect(character2.rect):
+        # Display the happy graphics display image
+        screen.blit(happy_image, (screen_width/2, screen_height/2))
+        pygame.display.flip()
+        
+        # Play the audio prompt
+        collision_sound = pygame.mixer.Sound("collision_sound.wav")
+        collision_sound.play()
+        
+        # Show the statistics
+        print("Character 1 moves:", character1.moves)
+        print("Character 2 moves:", character2
