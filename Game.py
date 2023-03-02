@@ -2,6 +2,8 @@ import tkinter as tk
 from playsound import *
 import math
 
+
+MoreStudentsPlayers = [
 playerDictionary = {}
 activePlayers = 0
 turnOrder = 1
