@@ -2,6 +2,7 @@ import tkinter as tk
 from playsound import *
 import math
 
+MoreStudentPlayers = {}
 playerDictionary = {}
 activePlayers = 0
 turnOrder = 1
@@ -31,6 +32,18 @@ class Game:
             "totalRunDistance": 0,
             "runCount": 0
         }
+        
+        global MoreStudentPlayers
+    MoreStudentPlayers = {
+        "MiddleSchoolers":[1,2,3,4,5,6,7,8],
+        print("Enter a number to see which grid you endup on":)
+        "DifferentMoves":[[],[],[],[],[],[],[],[]]
+        "DifferentScores" :[0,0,0,0,0,0,0,0]
+        "StartingPoints": [0,0], [0, int(height)-1,[int(width)-1, int(height)-1, int(width)-1, int(height)-1, int(width)-1, int(height)-1, int(width)-1, 0]],
+        "LongestRunTime": 0,
+        "ShortestRunTime": float('inf'),
+        "TotalDistance": 0, " TotalRunCount": 0
+    }
 
         self.makeBoard(int(width), int(height))
 
