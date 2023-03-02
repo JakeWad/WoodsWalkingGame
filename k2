@@ -279,4 +279,5 @@ class Game:
             self.playerDictionary["totalRunDistance"] += runDistance
             self.playerDictionary["runCount"] += 1
 
-
+            labelTxt = self.getScoreSheet()
+		self.scoreLabel.configure(text=f"{labelTxt}")
