@@ -40,6 +40,9 @@ class Game:
         self.players = players
         self.grid = (int(width), int(height))
         self.btnDictionary = dict()
+	self.grid_size = grid_size
+        self.grid_shape = grid_shape
+        self.meet_time = meet_time
 
         for x in range(1, int(players) + 1):
             self.activePlayers.append(x)
@@ -55,7 +58,16 @@ class Game:
                 "totalRunDistance": 0,
                 "runCount": 0
             }
-        else:
+	if self.grade == 3:
+	    self.playerDictionary["longestRunWithoutMeeting"] = 0
+	    self.playerDictionary["shortestRunWithoutMeeting"] = float('inf')
+	    self.playerDictionary["averageRunWithoutMeeting"] = 0
+	if self.grade == 4 or self.grade == 5:
+	    self.playerDictionary["longestRunWithoutMeeting"] = 0
+	    self.playerDictionary["shortestRunWithoutMeeting"] = float('inf')
+	    self.playerDictionary["averageRunWithoutMeeting"] = 0
+	
+	else:
             self.playerDictionary["players"] = []
             self.playerDictionary["moveHistories"] = []
             self.playerDictionary["scores"] = []
