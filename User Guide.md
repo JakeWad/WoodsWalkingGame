@@ -12,9 +12,9 @@
 
 ∙ Once starting the game, you will be asked what grade you are in.
 
-  ∙ For all grades K-8, you will be asked grid size
+    ∙ For all grades K-8, you will be asked grid size
   
-  ∙ For grades 3-8 you will be asked how many characters will be playing
+    ∙ For grades 3-8 you will be asked how many characters will be playing
   
 ∙ Sound will be played when the game starts and stops when the game ends. 
 
