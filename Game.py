@@ -32,18 +32,31 @@ class Game:
             "totalRunDistance": 0,
             "runCount": 0
         }
-        
-        global MoreStudentPlayers
-    MoreStudentPlayers = {
-        "MiddleSchoolers":[1,2,3,4,5,6,7,8],
-        print("Enter a number to see which grid you endup on":)
-        "DifferentMoves":[[],[],[],[],[],[],[],[]]
-        "DifferentScores" :[0,0,0,0,0,0,0,0]
-        "StartingPoints": [0,0], [0, int(height)-1,[int(width)-1, int(height)-1, int(width)-1, int(height)-1, int(width)-1, int(height)-1, int(width)-1, 0]],
-        "LongestRunTime": 0,
-        "ShortestRunTime": float('inf'),
-        "TotalDistance": 0, " TotalRunCount": 0
-    }
+G = 2
+R = 3
+S = 4
+T = 5
+for _ in range(4):
+    moveHistories= (input('Enter a Number:'))
+if G  == 2 :
+    print("G will make the first move")
+else:
+    print("R, S or T get a chance to make a  first move")
+if R  == 3:
+    print("R will make the second move")
+else: 
+    print("S or T get a chance to make the second move")
+if S == 4:
+    print("S Gets to make the third move")
+else: 
+    print("T get a chance to make the third move")
+if T == 5:
+    print("T Gets to make the fourth move")
+else: 
+    print("G, R, S, T havde made there moves")
+
+
+# Thank you https://www.w3schools.com/python/trypython.asp?filename=demo_if_else for helping me
 
         self.makeBoard(int(width), int(height))
 
