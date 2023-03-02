@@ -7,7 +7,7 @@ import os
 
 class Game:
 
-    def __init__( self, grade, players, width, height,stats ):
+    def __init__( self, grade, players, width, height,stats=None ):
         self.playerDictionary = {}
         self.activePlayers = 0
         self.turnOrder = 1
@@ -15,19 +15,12 @@ class Game:
         self.counter = 0
         self.spriteArray = []
         self.scoreLabel = ""
-        print(f"stats is {stats}")
-        try:
-            if(stats is not False and self.totalStats is False):
-                self.totalStats = stats
-            elif(stats is not False and self.totalStats is not False):
-                counter = 0
-                for x in stats:
-                    self.totalStats[counter] += x
-                    counter +=1
-            else:
-                self.totalStats = stats
-        except:
-            pass
+       
+	if stats is not None:
+            self.stats = stats
+        else:
+            self.stats={}
+	
         self.newcanvas = None
         self.treeImagePath = None
         self.player3Char = None
