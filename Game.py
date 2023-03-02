@@ -123,6 +123,30 @@ class Game:
 
         titleLabel = tk.Label(self.newroot,  text="Wandering in the Woods", fg="black", font=("Helvetica", 32))
         titleLabel.grid(column=2 , row=2  )
+	
+	if self.grade == 0:  # simple grid for K-2
+		self.newcanvas = tk.Canvas(self.newroot, width=cWidth / 3, height=cHeight / 2)
+		self.newcanvas.grid(column=2, row=4)
+		self.makeGrid()
+
+    	elif self.grade == 3:  # visual maze for grades 3-5
+		self.treeImagePath = "images/obstacle.png"
+		self.player1Char = tk.PhotoImage(file='images/charSprites/Boy.png', master=self.newroot)
+		self.player2Char = tk.PhotoImage(file='images/charSprites/Girl.png', master=self.newroot)
+		self.player3Char = tk.PhotoImage(file='images/charSprites/Dog.png', master=self.newroot)
+		self.player4Char = tk.PhotoImage(file='images/charSprites/Cat.png', master=self.newroot)
+		self.grid = self.generate_maze(self.grid_shape)
+		self.newcanvas = tk.Canvas(self.newroot, width=self.grid_size * self.grid_shape[0], height=self.grid_size * self.grid_shape[1])
+		self.newcanvas.grid(column=2, row=4)
+		self.draw_maze()
+
+    	elif self.grade >= 4:  # complex maze for grades 6-8
+		self.treeImagePath = "images/tree.png"
+		self.waterImagePath = "images/water.png"
+		self.player1Char = tk.PhotoImage(file='images/charSprites/Boy.png', master=self.newroot)
+		self.player2Char = tk.PhotoImage(file='images/charSprites/Girl.png', master=self.newroot)
+		self.player3Char = tk.PhotoImage(file='images/charSprites/Dog.png', master=self.newroot)
+		self.player4Char = tk.PhotoImage(file='images/charSprites/Cat.png', master=self.newroot)
 
 
 
