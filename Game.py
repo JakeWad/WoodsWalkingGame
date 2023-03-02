@@ -33,6 +33,31 @@ class Game:
             "totalRunDistance": 0,
             "runCount": 0
         }
+    
+        G = 2
+R = 3
+S = 4
+T = 1
+for _ in range(4):
+    moveHistories= (input('Enter a Number:'))
+if G > R:
+    print("G will make the first move")
+else:
+    print("R will make the second move")
+if G > S:
+    print("S will make the first move ")
+else: 
+    print("G will make the first move still")
+if G > T:
+    print("T Gets to make the first move")
+else: 
+    print("G still makes the first move")
+
+
+
+# Thank you https://www.w3schools.com/python/trypython.asp?filename=demo_if_else for helping me
+
+
 
         self.makeBoard(int(width), int(height))
 
