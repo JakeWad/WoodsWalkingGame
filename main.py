@@ -1,12 +1,11 @@
-
 import tkinter as tk
 from tkinter import *
 import Game
-import playsound as playsound
-from playsound import *
+import Audio as Audio
 
-import gtts as gt
+from gtts import gTTS
 game = Game.Game
+Audio = Audio.Audio
 playerOptions = [
     "2",
     "3",
@@ -37,11 +36,11 @@ frame.grid(column=1, row=1)
 
 
 def text2speech(text, filename) :
-    txt = gt.gTTS(text)
+    txt =  gTTS(text)
     txt.save(f"sounds/output/{filename}.mp3")
-    playsound(f"sounds/output/{filename}.mp3", block=False)
+    Audio(filename).play()
 
-def addFeatures():
+def addFeatures(grade):
     instLvl = tk.Label(frame, text="Choose your level design", fg='red', font=("Helvetica", 16))
     instLvl.pack(side=TOP)
 
@@ -56,10 +55,28 @@ def addFeatures():
     instPlayers.pack(side=TOP)
     playerList = tk.OptionMenu(frame, usrPlayerNum, *playerOptions)
     playerList.pack(side=TOP)
+
+    if grade == '2':
+        instLvl = tk.Label(frame, text="Choose your movement constraints", fg='red', font=("Helvetica", 16))
+        instLvl.pack(side=TOP)
+
+        entryWidth = tk.Entry(frame, textvariable=xCon)
+        entryWidth.pack(side=TOP)
+        xLbl = tk.Label(frame, text="X", fg='red', font=("Helvetica", 16))
+        xLbl.pack(side=TOP)
+        entryHeight = tk.Entry(frame, textvariable=yCon)
+        entryHeight.pack(side=TOP)
+        text2speech(
+            "Please provide the dimensions for your level. You can make either a square or a rectangle. Then choose"
+            "how many players you have. You can also specify how your characters will move", "INST_36")
+
+    else:
+        text2speech(
+            "Please provide the dimensions for your level. You can make either a square or a rectangle. Then choose"
+            "how many players you have.", "INST_36")
     subBtn = tk.Button(frame, text="Play", command=lambda : forgetRoot())
     subBtn.pack(side=TOP)
-    text2speech("Please provide the dimensions for your level. You can make either a square or a rectangle. Then choose"
-                     "how many players you have.","INST_36")
+
 
 def firstQuestion():
 
@@ -83,7 +100,6 @@ def hide(hideItem):
 
 
 def checkGrade(grade,passFrame ):
-    print(" in check grade and the usrGrade " + grade)
     hide(passFrame)
     flag = False
 
@@ -91,7 +107,7 @@ def checkGrade(grade,passFrame ):
     if grade == "1" or grade == "2" and flag is not True:
         flag = True
 
-        addFeatures()
+        addFeatures(usrGrade.get())
     elif grade == "0":
         flag = False
         instLvl = tk.Label(frame, text="Choose your square's dimensions", fg='red', font=("Helvetica", 16))
@@ -106,12 +122,13 @@ def checkGrade(grade,passFrame ):
 
 
 def forgetRoot():
-    stats = []
+    stats = None
+    constraint = []
     if usrGrade.get() == "0":
-        game(0, 2, usrWidth.get(), usrWidth.get(),stats)
+        game(0, 2, usrWidth.get(), usrWidth.get(),constraint,stats)
         root.destroy()
     elif usrGrade.get() == "1" or usrGrade.get() == "2":
-        game(usrGrade.get(), usrPlayerNum.get(), usrWidth.get(), usrHeight.get(),stats)
+        game(usrGrade.get(), usrPlayerNum.get(), usrWidth.get(), usrHeight.get(),[xCon,yCon],stats)
         root.destroy()
 
 
@@ -120,7 +137,8 @@ usrPlayerNum = StringVar()
 usrWidth = StringVar()
 usrHeight = StringVar()
 usrGrade = StringVar(value="0")
-
+xCon = StringVar(value="1")
+yCon = StringVar(value="1")
 
 firstQuestion()
 root.mainloop()
