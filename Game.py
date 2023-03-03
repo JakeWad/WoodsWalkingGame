@@ -126,8 +126,6 @@ class Game:
 		self.treeImagePath = "images/obstacle.png"
 		self.player1Char = tk.PhotoImage(file='images/charSprites/Boy.png', master=self.newroot)
 		self.player2Char = tk.PhotoImage(file='images/charSprites/Girl.png', master=self.newroot)
-		self.player3Char = tk.PhotoImage(file='images/charSprites/Dog.png', master=self.newroot)
-		self.player4Char = tk.PhotoImage(file='images/charSprites/Cat.png', master=self.newroot)
 		self.grid = self.generate_maze(self.grid_shape)
 		self.newcanvas = tk.Canvas(self.newroot, width=self.grid_size * self.grid_shape[0], height=self.grid_size * self.grid_shape[1])
 		self.newcanvas.grid(column=2, row=4)
@@ -138,9 +136,6 @@ class Game:
 		self.waterImagePath = "images/water.png"
 		self.player1Char = tk.PhotoImage(file='images/charSprites/Boy.png', master=self.newroot)
 		self.player2Char = tk.PhotoImage(file='images/charSprites/Girl.png', master=self.newroot)
-		self.player3Char = tk.PhotoImage(file='images/charSprites/Dog.png', master=self.newroot)
-		self.player4Char = tk.PhotoImage(file='images/charSprites/Cat.png', master=self.newroot)
-
 
 
         self.scoreLabel = tk.Label(self.newroot, text=scoreSheet)
