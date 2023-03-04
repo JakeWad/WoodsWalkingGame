@@ -14,10 +14,6 @@
   ∙ For grades 3-5 you will be asked how many characters will be playing, along with gride size
   
   ∙ For grades 6-8 you will be asked the same questions as 3-5 with also the questions how far a user can move and which direction.
-  
-   ∙ For grades 6-8 there are move constrainsts
-   
-        . Whether you get to make the first, second, thrid , or fourth move will all be determined by the numbers displayed using letters of G, R, S, T to see if the criteria is meet for the letter entered. If the criteria for the specific letter then that letter gets to make its move otherwise the remaining letters get a chance to make the move.
         
 ∙ Sound will be played when the game starts and stops when the game ends. 
 
