@@ -19,4 +19,3 @@ For grades 3-5, students can set up the size of a grid, which can be rectangular
 If the game is played with 3 or 4 players, if two find each other, they will be moving together until they find the third player. In the same way, if the third player is found (assuming we have 4 players), the three players will move together until the fourth player is found
  
 In grades 6-8, students have all the control of the 3-5 game, but 6-8 students will be challenged to run experiments to determine how the average run varies with the size and shape of the grids. They will also be able to explore different protocols for wandering, and to decide which is the best way to wander if you want to shorten the time it takes to meet up.
-Important Notes:
